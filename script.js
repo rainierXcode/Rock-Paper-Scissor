@@ -97,67 +97,79 @@ function startAgain() {
     start();
 }
 
-function playerChooseButton(){
+function playerChooseButton() {
     buttons.forEach(button => {
         button.addEventListener('click', () => {
-    
             const playerSelection = button.id;
             buttons.forEach(btn => btn.classList.remove('button-clicked'));
             button.classList.add('button-clicked');
-    
+
             setTimeout(() => {
                 button.classList.remove('button-clicked');
             }, 500);
-    
+
             const computerSelection = getComputerChoice();
-    
-            console.log(battleBegin(playerSelection, computerSelection));
-    
+
+
             const remark = document.querySelector('#remark');
             remark.textContent = battleBegin(playerSelection, computerSelection);
-    
+
             if (playerSelection === "rock") {
                 if (computerSelection === "paper") {
                     computerScore += 1;
+                    remarkColor('r');
                 }
                 else if (computerSelection === "scissor") {
                     playerScore += 1;
+                    remarkColor('g');
+                }
+                else {
+                    remarkColor('b');
                 }
             }
-    
+
             else if (playerSelection === "paper") {
-    
+
                 if (computerSelection === "scissor") {
                     computerScore += 1;
+                    remarkColor('r');
                 }
                 else if (computerSelection === "rock") {
                     playerScore += 1;
+                    remarkColor('g');
+                }
+                else {
+                    remarkColor('b');
                 }
             }
-    
+
             else if (playerSelection === "scissor") {
                 if (computerSelection === "rock") {
                     computerScore += 1;
+                    remarkColor('r');
                 }
                 else if (computerSelection === "paper") {
                     playerScore += 1;
+                    remarkColor('g');
+                }
+                else {
+                    remarkColor('b');
                 }
             }
-    
-            console.log(playerScore + " " + computerScore);
+
             const pScore = document.querySelector('#pscore');
             const cScore = document.querySelector('#cscore');
             pScore.textContent = playerScore;
             cScore.textContent = computerScore;
             const setUnclick = document.querySelectorAll('.button');
             const rmScore = document.querySelector('.score');
-    
+
             if (playerScore === 5) {
                 setUnclick.forEach(button => {
                     button.classList.add('button-unclickable');
                 });
-                console.log("Player Win!");
-                remark.textContent = 'WIN!'
+                remark.setAttribute("id", "expand");
+                remark.textContent = 'WIN!';
                 setTimeout(() => {
                     playerScore = 0;
                     computerScore = 0;
@@ -172,7 +184,7 @@ function playerChooseButton(){
                 setUnclick.forEach(button => {
                     button.classList.add('button-unclickable');
                 });
-                console.log("Computer Win!");
+                remark.setAttribute("id", "expand");
                 remark.textContent = 'LOSE!';
                 setTimeout(() => {
                     playerScore = 0;
@@ -184,11 +196,25 @@ function playerChooseButton(){
                     startAgain();
                 }, 3000);
             }
-    
+
         });
     });
+}
+
+function remarkColor(color) {
+    const text = document.querySelector('#remark');
+    if (color === 'g') {
+        text.style.color = '#7fff00';
     }
-    
+    else if (color === 'r') {
+        text.style.color = '#ff1a1a';
+    }
+    else {
+        text.style.color = '#000';
+    }
+}
 
 start();
 playerChooseButton();
+
+
