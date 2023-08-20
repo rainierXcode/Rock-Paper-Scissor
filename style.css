@@ -10,7 +10,7 @@ body{
 .header{
     display: flex;
     justify-content: space-between;
-    margin: 10px 20px;
+    margin: 20px 20px;
     align-items: center;
     font-size: 12px;
     color: white;
@@ -35,7 +35,7 @@ body{
 .container{
     flex: 1;
     display: flex;
-    gap: 30px;
+    gap: 50px;
     justify-content: center;
     align-items: center ;
     flex-direction: column;
@@ -43,7 +43,7 @@ body{
 
 .content{
     display: flex;
-    gap: 30px;
+    gap: 70px;
     justify-content: center;
     align-items: center;
 }
@@ -55,16 +55,16 @@ body{
 
 
 .content button{
-   height: 100px;
-   width: 150px;
+   height: 150px;
+   width: 200px;
    background-color: #E0E0E0;
    cursor: pointer;
    transition: border-color 0.3s ease-in-out;
 }
 
 #start-button button{
-   height: 30px;
-   width: 80px;
+   height: 50px;
+   width: 100px;
    background-color: #698B01;
    border: 0 ;
    border-radius: 5px;
@@ -82,7 +82,7 @@ img{
     margin-top: 5px;
     text-align: center;
     color: white;
-    font-size: 12px;
+    font-size: 24px;
 
 }
 
@@ -102,11 +102,11 @@ img{
     justify-content: center;
     align-items: center;
     gap: 10px;
-    font-size: 30px;
+    font-size: 50px;
 }
 
 #remark{
-    font-size: 20px;
+    font-size: 40px;
     font-family: Arial, sans-serif;
 }
 
@@ -131,7 +131,11 @@ img{
 
 
     .content button {
-        height: 70px;
-        width: 70px;
+        height: 80px;
+        width: 80px;
+    }
+
+    .content{
+        gap: 50px
     }
 }
