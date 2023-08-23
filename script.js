@@ -1,220 +1,184 @@
+function main() {
+    const optionText = document.getElementById("optionText");
+    hideBtn();
+    setTimeout(() => {
+        optionText.textContent = 'CHOOSE AN OPTION';
+        openOptionBtn();
+    }, 3000);
+    battleBegin();
+}
+
+function hideBtn() {
+    const playAgainBtn = document.getElementById('playAgain');
+    playAgainBtn.classList.add('hideBtn');
+
+    const iconBtn = document.querySelector('.option');
+    iconBtn.classList.add('hideBtn');
+}
+
+function openOptionBtn() {
+    const iconBtn = document.querySelector('.option');
+    iconBtn.classList.remove('hideBtn');
+}
+
 function getComputerChoice() {
     var choices = ["rock", "paper", "scissor"];
     rand_num = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
     return choices[rand_num - 1];
 }
 
-function battleBegin(playerSelection, computerSelection) {
-
-    if (playerSelection.toLowerCase() == "rock") {
-        if (computerSelection == "rock") {
-            return "Tie!";
-        }
-        else if (computerSelection == "paper") {
-            return "You Lose! Paper Beat Rock";
-        }
-        else if (computerSelection == "scissor") {
-            return "You Win! Rock Beat Scissors";
-        }
-    }
-
-    else if (playerSelection.toLowerCase() == "paper") {
-        if (computerSelection == "paper") {
-            return "Tie!";
-        }
-        else if (computerSelection == "scissor") {
-            return "You Lose! Scissor Beat Paper";
-        }
-        else if (computerSelection == "rock") {
-            return "You Win! Paper Beat Rock";
-        }
-    }
-
-    else if (playerSelection.toLowerCase() == "scissor") {
-        if (computerSelection == "scissor") {
-            return "Tie!";
-        }
-        else if (computerSelection == "rock") {
-            return "You Lose! Rock Beat Scissor";
-        }
-        else if (computerSelection == "paper") {
-            return "You Win! Scissor Beat Paper";
-        }
-    }
-
-}
-
-function start() {
-    const startButton = document.querySelector('#start-button');
-    const buttonUnclickable = document.querySelector('.button-unclickable');
-    startButton.addEventListener('click', () => {
-        startButton.remove();
-
-        const buttonsUnclickable = document.querySelectorAll('.button-unclickable');
-        buttonsUnclickable.forEach(button => {
-            button.classList.remove('button-unclickable');
-        });
 
 
-        const score = document.createElement('div');
-        score.className = 'score';
-
-        const pScore = document.createElement('div');
-        pScore.id = 'pscore';
-        const cScore = document.createElement('div');
-        cScore.id = 'cscore';
-        const twoDot = document.createElement('div');
-        pScore.textContent = playerScore;
-        cScore.textContent = computerScore;
-        twoDot.textContent = ':';
-        score.appendChild(pScore);
-        score.appendChild(twoDot);
-        score.appendChild(cScore);
-        parentContainer.appendChild(score);
-
-        const remark = document.createElement('div');
-        remark.id = 'remark';
-        parentContainer.appendChild(remark);
+function battleBegin() {
+    let playerScore =0;
+    let compScore = 0;
+    const optionBtn = document.querySelectorAll(".iconBtn");
+    const pScore = document.getElementById("playerScore");
+    const cScore = document.getElementById('compScore');
+    const remark = document.getElementById("remark");
+    const pImg = document.getElementById("playerImg");
+    const cImg = document.getElementById("compImg");
+    pScore.textContent = 0;
+    cScore.textContent = 0;
 
 
-    });
-
-}
-
-const buttons = document.querySelectorAll('.button');
-const parentContainer = document.querySelector('.container');
-playerScore = 0;
-computerScore = 0;
-
-function startAgain() {
-    const startButton = document.createElement('div');
-    startButton.id = 'start-button';
-    const btn = document.createElement('button');
-    btn.textContent = "Start";
-    startButton.appendChild(btn);
-    parentContainer.appendChild(startButton);
-
-    start();
-}
-
-function playerChooseButton() {
-    buttons.forEach(button => {
+    optionBtn.forEach(button => {
         button.addEventListener('click', () => {
-            const playerSelection = button.id;
-            buttons.forEach(btn => btn.classList.remove('button-clicked'));
-            button.classList.add('button-clicked');
-
-            setTimeout(() => {
-                button.classList.remove('button-clicked');
-            }, 500);
-
-            const computerSelection = getComputerChoice();
-
-
-            const remark = document.querySelector('#remark');
-            remark.textContent = battleBegin(playerSelection, computerSelection);
-
-            if (playerSelection === "rock") {
-                if (computerSelection === "paper") {
-                    computerScore += 1;
-                    remarkColor('r');
+            const playerChoice = button.id;
+            const compChoice = getComputerChoice();
+            if (playerChoice === "rock") {
+                pImg.src = "images/1.png";
+                pImg.alt = "rock";
+                if (compChoice === "paper") {
+                    cImg.src = "images/2.png";
+                    cImg.alt = "paper";
+                    compScore += 1;
+                    remark.style.visibility = "hidden";
                 }
-                else if (computerSelection === "scissor") {
+                else if (compChoice === "scissor") {
                     playerScore += 1;
-                    remarkColor('g');
+                    remark.style.visibility = "hidden";
+                    cImg.src = "images/3.png";
+                    cImg.alt = "scissor";
                 }
                 else {
-                    remarkColor('b');
+                    cImg.src = "images/1.png";
+                    cImg.alt = "rock";
+                    remark.style.visibility = "visible";
+                    remark.textContent = "TIE"
                 }
             }
 
-            else if (playerSelection === "paper") {
-
-                if (computerSelection === "scissor") {
-                    computerScore += 1;
-                    remarkColor('r');
+            else if (playerChoice === "paper") {
+                pImg.src = "images/2.png";
+                pImg.alt = "paper";
+                if (compChoice === "scissor") {
+                    cImg.src = "images/3.png";
+                    cImg.alt = "scissor";
+                    compScore += 1;
+                    remark.style.visibility = "hidden";
                 }
-                else if (computerSelection === "rock") {
+                else if (compChoice === "rock") {
+                    cImg.src = "images/1.png";
+                    cImg.alt = "rock";
                     playerScore += 1;
-                    remarkColor('g');
+                    remark.style.visibility = "hidden";
                 }
                 else {
-                    remarkColor('b');
+                    cImg.src = "images/2.png";
+                    cImg.alt = "paper";
+                    remark.style.visibility = "visible";
+                    remark.textContent = "TIE"
                 }
             }
 
-            else if (playerSelection === "scissor") {
-                if (computerSelection === "rock") {
-                    computerScore += 1;
-                    remarkColor('r');
+            else if (playerChoice === "scissor") {
+                pImg.src = "images/3.png";
+                pImg.alt = "scissor";
+                if (compChoice === "rock") {
+                    cImg.src = "images/1.png";
+                    cImg.alt = "rock";
+                    compScore += 1;
+                    remark.style.visibility = "hidden";
                 }
-                else if (computerSelection === "paper") {
+                else if (compChoice === "paper") {
+                    cImg.src = "images/2.png";
+                    cImg.alt = "paper";
                     playerScore += 1;
-                    remarkColor('g');
+                    remark.style.visibility = "hidden";
                 }
                 else {
-                    remarkColor('b');
+                    cImg.src = "images/3.png";
+                    cImg.alt = "scissor";
+                    remark.style.visibility = "visible";
+                    remark.textContent = "TIE"
                 }
             }
-
-            const pScore = document.querySelector('#pscore');
-            const cScore = document.querySelector('#cscore');
             pScore.textContent = playerScore;
-            cScore.textContent = computerScore;
-            const setUnclick = document.querySelectorAll('.button');
-            const rmScore = document.querySelector('.score');
-
-            if (playerScore === 5) {
-                setUnclick.forEach(button => {
-                    button.classList.add('button-unclickable');
-                });
-                remark.setAttribute("id", "expand");
-                remark.textContent = 'WIN!';
-                setTimeout(() => {
-                    playerScore = 0;
-                    computerScore = 0;
-                    pScore.textContent = playerScore;
-                    cScore.textContent = computerScore;
-                    remark.remove();
-                    rmScore.remove();
-                    startAgain();
-                }, 3000);
+            cScore.textContent = compScore;
+            if (playerScore == 5) {
+                playerScore = 0;
+                compScore = 0;
+                const iconBtn = document.querySelector('.option');
+                iconBtn.classList.add('hideBtn');
+                startAgain("p");
             }
-            else if (computerScore === 5) {
-                setUnclick.forEach(button => {
-                    button.classList.add('button-unclickable');
-                });
-                remark.setAttribute("id", "expand");
-                remark.textContent = 'LOSE!';
-                setTimeout(() => {
-                    playerScore = 0;
-                    computerScore = 0;
-                    pScore.textContent = playerScore;
-                    cScore.textContent = computerScore;
-                    remark.remove()
-                    rmScore.remove();
-                    startAgain();
-                }, 3000);
+            if (compScore == 5) {
+                playerScore = 0;
+                compScore = 0;
+                const iconBtn = document.querySelector('.option');
+                iconBtn.classList.add('hideBtn');
+                startAgain("c");
             }
-
-        });
+        
+        }); 
     });
 }
 
-function remarkColor(color) {
-    const text = document.querySelector('#remark');
-    if (color === 'g') {
-        text.style.color = '#7fff00';
-    }
-    else if (color === 'r') {
-        text.style.color = '#ff1a1a';
-    }
-    else {
-        text.style.color = '#000';
-    }
+function startAgain(who) {
+    const playAgainBtn = document.getElementById("playAgain");
+    playAgainBtn.classList.remove('hideBtn');
+
+
+    const remark = document.getElementById("remark");
+    remark.style.visibility = "visible";
+    if (who === "p") remark.textContent = "WIN";
+    else remark.textContent = "LOSE";
+
+    const optionText = document.getElementById("optionText");
+    optionText.textContent = "";
+
+    playAgainBtn.addEventListener('click', () => {
+        remark.style.visibility = "hidden";
+        const optionText = document.getElementById("optionText");
+        optionText.textContent = "ROCK,PAPER,SCISSOR...GO!";
+
+        const playAgainBtn = document.getElementById('playAgain');
+        playAgainBtn.classList.add('hideBtn');
+
+
+        setTimeout(() => {
+            optionText.textContent = 'CHOOSE AN OPTION';
+            openOptionBtn();
+        }, 3000);
+        const pScore = document.getElementById("playerScore");
+        const cScore = document.getElementById('compScore');
+        pScore.textContent = "0";
+        cScore.textContent = "0";
+
+        const pImg = document.getElementById("playerImg");
+        const cImg = document.getElementById("compImg");
+        
+        pImg.src = "images/1.png";
+        pImg.alt = "rock";
+        cImg.src = "images/1.png";
+        cImg.alt = "rock";
+
+
+
+    })
+
 }
 
-start();
-playerChooseButton();
 
-
+main();

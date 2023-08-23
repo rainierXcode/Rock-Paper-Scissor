@@ -1,141 +1,136 @@
 body{
-    background-color: #605E5E;
-    margin: 0;
+background-color: #040201;
+color: #ECF4F1;
+}
+
+.scoreArea{
     display: flex;
-    flex-direction: column;
-    height: 100vh;
-}
-
-
-.header{
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 20px;
-    align-items: center;
-    font-size: 12px;
-    color: white;
-   
-}
-
-.header #header-left {
-    font-size: 20px;
-    font-weight: 700;
-    font-family: Arial, Helvetica, sans-serif;
-    
-} 
-
-.header #header-right a{
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    flex-shrink: 0;
-    font-size: 16px;
-    text-decoration: none;
-    color: #fff;
-}
-
-.container{
-    flex: 1;
-    display: flex;
-    gap: 50px;
-    justify-content: center;
-    align-items: center ;
-    flex-direction: column;
-}
-
-.content{
-    display: flex;
-    gap: 70px;
-    justify-content: center;
-    align-items: center;
-}
-.footer{
-    padding: 10px;
     text-align: center;
-    font-size: 16px;
-}
-
-
-.content button{
-   height: 150px;
-   width: 200px;
-   background-color: #E0E0E0;
-   cursor: pointer;
-   transition: border-color 0.3s ease-in-out;
-}
-
-#start-button button{
-   height: 50px;
-   width: 100px;
-   background-color: #698B01;
-   border: 0 ;
-   border-radius: 5px;
-   color: white;
-   font-size: 22px;
-   font-family: 'Josefin Sans';
-}
-
-img{
-    width: 50%;
-    height: 50%;
+    justify-content: space-evenly;
+    margin-top: 50px;
+    flex-wrap: wrap;
 }
 
 .text{
-    margin-top: 5px;
-    text-align: center;
-    color: white;
-    font-size: 24px;
-
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 45px;
 }
 
-.button-clicked {
-    border: 3px solid #00bfff; /* Shiny border color */
-}
+.scoreText{
+    font-size: 68px;
+    font-family: "Times New Roman", Times, serif;
+    margin-top: 20px;
 
-.button-unclickable {
-    pointer-events: none;
- }
- 
-  
-.score{
-    height: 50px;
-    width: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    font-size: 50px;
 }
 
 #remark{
-    font-size: 40px;
-    font-family: Arial, sans-serif;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 45px;
+    margin-top: 65px;
+     visibility:hidden;
 }
 
-#expand {
-    font-size: 100px;
-  }
-  
 
-@media screen and (max-width: 768px) {
-    .header {
+
+#playAgain{
+    margin-top: 20px;
+    height: 40px;
+    width: 200px;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: "Times New Roman", Times, serif;
+    color:  #ECF4F1;
+    background-color: #4FBA91;
+}
+
+.pictureArea{
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+}
+
+img{
+    margin-top: 50px;
+    width: 200px;
+
+}
+
+#compImg{
+    transform: scaleX(-1);
+}
+
+.option{
+    display: flex;
+    justify-content: center;
+
+}
+
+#optionText{
+    text-align: center;
+    margin-top: 40px;
+    font-weight: 700;
+    font-size: 45px;
+    font-family: Courier New, Courier, monospace;
+    visibility: visible;
+
+}
+
+.icon{
+    height: 70px;
+    width: 70px;
+    margin-top: 0px;
+}
+
+.iconBtn{
+    height: 70px;
+    width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #040201;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.hideBtn{
+    display: none;
+    pointer-events: none;
+}
+
+
+@media (max-width: 768px) {
+    .scoreArea{
+        display: flex;
         flex-direction: column;
-        text-align: center;
+    }
+    #remark{
+        margin-top: 20px;
+    }
+    .c{
+        margin-top: 20px;
     }
 
-    .header #header-left {
-        font-size: 16px;
+    .text, .scoreText{
+        font-size: 30px;
     }
 
-    #expand{
-        font-size: 50px;
+    #playerImg, #compImg{
+        width: 100px;
+        margin-bottom: 100px;
     }
 
-
-    .content button {
-        height: 80px;
-        width: 80px;
+    .pictureArea{
+        gap: 100px;
     }
 
-    .content{
-        gap: 50px
+    #optionText{
+        font-size: 25px;
     }
-}
+    .icon, .iconBtn {
+        height: 50px;
+        width: 50px;
+    }
+
+  }

@@ -3,39 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rock-paper-scissor</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
-    <title>Document</title>
   </head>
   <body>
-    <div class="header">
-      <div id="header-left">Rock-Paper-Scissor</div>
-      <div id="header-right"><a href="https://github.com/rainierXcode/Rock-Paper-Scissors" target="_blank">Github Link</a></div>
-    </div>
-
-    <div class="container">
-      <div class="content">
-        <div>
-          <button id="rock" class="button button-unclickable"><img src="icon/rock.png" alt="rock.png" /></button>
-          <div class="text">Rock</div>
-        </div>
-
-        <div>
-          <button id="paper" class="button button-unclickable"><img src="icon/paper.png" alt="paper.png" /></button>
-          <div class="text">Paper</div>
-        </div>
-
-        <div >
-          <button id="scissor" class="button button-unclickable"><img src="icon/scissor.png" alt="scissor.png" /></button>
-          <div class="text">Scissor</div>
-        </div>
+    <div class="scoreArea">
+      <div class="p">
+        <div class="text">PLAYER</div>
+        <div id="playerScore" class="scoreText">0</div>
       </div>
-      <div id="start-button">
-        <button>Start</button>
-
+      <div>
+        <div id="remark">YOU WIN</div>
+        <button id="playAgain">PLAY AGAIN</button>
+      </div>
+      <div class="c">
+        <div class="text">COMPUTER</div>
+        <div id="compScore" class="scoreText">0</div>
       </div>
     </div>
 
-    <footer class="footer">Copyright &copy Rainier Sapin</footer>
+    <div class="pictureArea">
+      <div>
+        <img src="images/1.png" alt="rock-paper-scissor" id="playerImg"/>
+      </div>
+      <div>
+        <img src="images/1.png" alt="rock-paper-scissor" id="compImg" />
+      </div>
+    </div>
+
+    <div id="optionText">ROCK,PAPER,SCISSOR...GO!</div>
+    <div class="option">
+      <div><button class="iconBtn" id="rock"><img src="icon/1.png" alt="rock"  class="icon"></button></div>
+      <div ><button class="iconBtn" id="paper"><img src="icon/2.png" alt="paper"  class="icon"></button></div>
+      <div><button class="iconBtn" id="scissor"><img src="icon/3.png" alt="scissor"  class="icon"></button></div>
+    </div>
   </body>
 </html>
